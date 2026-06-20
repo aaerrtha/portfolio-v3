@@ -37,3 +37,33 @@ export interface RoleLine {
   company: string;
   href: string;
 }
+
+export interface LabScreenshot {
+  src?: string;
+  alt?: string;
+}
+
+export interface LabExperiment {
+  title: string;
+  description: string;
+  slug: string;
+  published: boolean;
+  order?: number;
+  date?: string;
+  coverImage?: string;
+  coverAlt?: string;
+  iconImage?: string;
+  iconAlt?: string;
+  iconBg?: string;
+  badge?: string;
+  badgePosition?: "left" | "right";
+  downloadUrl?: string;
+  githubUrl?: string;
+  summary?: string;
+  screenshots?: LabScreenshot[];
+  tags?: string[];
+}
+
+export interface Lab extends LabExperiment {
+  content: string;
+}

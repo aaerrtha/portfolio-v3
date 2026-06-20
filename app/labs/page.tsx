@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { LabGrid } from "@/components/labs/LabGrid";
+import { getAllLabs } from "@/lib/labs";
 
 export const metadata: Metadata = {
   title: "Labs",
@@ -6,13 +8,11 @@ export const metadata: Metadata = {
 };
 
 export default function LabsPage() {
+  const experiments = getAllLabs();
+
   return (
-    <section className="max-w-3xl text-left">
-      <h1 className="font-serif text-2xl md:text-3xl font-semibold text-foreground">Labs</h1>
-      <p className="mt-4 text-base leading-relaxed text-muted">
-        A space for experiments, prototypes, and work-in-progress ideas. New
-        projects will land here as they take shape.
-      </p>
+    <section className="w-full text-left">
+      <LabGrid experiments={experiments} />
     </section>
   );
 }

@@ -25,7 +25,7 @@ export function MobileNav() {
 
   return (
     <header className="md:hidden fixed top-0 left-0 right-0 z-50 border-b border-border bg-background">
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-3 py-4">
         <NavLink href="/">
           <span className="text-sm font-medium text-foreground">{siteConfig.name}</span>
         </NavLink>
@@ -61,7 +61,7 @@ export function MobileNav() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative border-b border-border bg-background px-6 py-8"
+              className="relative border-b border-border bg-background px-3 py-8"
             >
               <div className="flex flex-col gap-6">
                 <SiteRoles />

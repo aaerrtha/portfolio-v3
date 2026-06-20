@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 interface NavLinkProps {
   href: string;
@@ -25,7 +25,7 @@ export function NavLink({ href, children, external = false, active = false }: Na
         className={`${className} inline-flex items-center gap-1`}
       >
         {children}
-        <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden="true" />
+        <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
       </a>
     );
   }

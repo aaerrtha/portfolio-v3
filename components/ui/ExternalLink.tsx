@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 interface ExternalLinkProps {
   href: string;
@@ -15,7 +15,7 @@ export function ExternalLink({ href, children }: ExternalLinkProps) {
       className="inline-flex items-center gap-1 text-foreground underline underline-offset-4 hover:text-muted transition-colors"
     >
       {children}
-      <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden="true" />
+      <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
     </a>
   );
 }

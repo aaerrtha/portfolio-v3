@@ -34,9 +34,9 @@ export function ThemeToggle() {
         className="inline-flex"
       >
         {theme === "light" ? (
-          <MoonIcon className="h-[22px] w-[22px]" aria-hidden="true" />
+          <MoonIcon className="h-4 w-4" aria-hidden="true" />
         ) : (
-          <SunIcon className="h-[22px] w-[22px]" aria-hidden="true" />
+          <SunIcon className="h-4 w-4" aria-hidden="true" />
         )}
       </motion.span>
     </button>

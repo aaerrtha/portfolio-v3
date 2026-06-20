@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/constants";
 import { NavLink } from "./NavLink";
+import { MaterialIcon } from "@/components/ui/MaterialIcon";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 export function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -32,9 +34,9 @@ export function MobileNav() {
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="text-foreground text-sm"
+          className="inline-flex items-center justify-center text-foreground"
         >
-          {open ? "Close" : "Menu"}
+          <MaterialIcon name={open ? "close" : "menu"} size={22} />
         </button>
       </div>
 
@@ -80,6 +82,8 @@ export function MobileNav() {
                     </NavLink>
                   ))}
                 </div>
+
+                <ThemeToggle />
               </div>
             </motion.nav>
           </>

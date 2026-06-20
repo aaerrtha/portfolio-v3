@@ -1,8 +1,13 @@
 import type { ProjectFrontmatter, ImpactMetric } from "@/lib/types";
+import { MaterialIcon } from "@/components/ui/MaterialIcon";
 
 function MetricArrow({ direction }: { direction?: ImpactMetric["direction"] }) {
-  if (direction === "up") return <span aria-hidden="true"> ↑</span>;
-  if (direction === "down") return <span aria-hidden="true"> ↓</span>;
+  if (direction === "up") {
+    return <MaterialIcon name="arrow_upward" size={16} className="ml-0.5 align-middle" />;
+  }
+  if (direction === "down") {
+    return <MaterialIcon name="arrow_downward" size={16} className="ml-0.5 align-middle" />;
+  }
   return null;
 }
 

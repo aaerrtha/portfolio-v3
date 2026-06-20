@@ -1,26 +1,42 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import { MaterialIcon } from "@/components/ui/MaterialIcon";
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleClick = () => {
+    const rect = buttonRef.current?.getBoundingClientRect();
+    const origin = rect
+      ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
+      : undefined;
+
+    toggleTheme(origin);
+  };
 
   return (
     <button
+      ref={buttonRef}
       type="button"
-      onClick={toggleTheme}
+      onClick={handleClick}
       aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-      className="text-muted hover:text-foreground transition-colors"
+      className="inline-flex items-center justify-center text-muted transition-colors hover:text-foreground"
     >
       <motion.span
         key={theme}
         initial={{ rotate: -90, opacity: 0 }}
         animate={{ rotate: 0, opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="inline-block text-lg"
+        className="inline-flex"
       >
-        {theme === "light" ? "☾" : "☀"}
+        <MaterialIcon
+          name={theme === "light" ? "dark_mode" : "light_mode"}
+          size={22}
+        />
       </motion.span>
     </button>
   );

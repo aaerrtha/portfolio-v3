@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { MaterialIcon } from "@/components/ui/MaterialIcon";
 
 interface NavLinkProps {
   href: string;
@@ -24,7 +25,7 @@ export function NavLink({ href, children, external = false, active = false }: Na
         className={`${className} inline-flex items-center gap-1`}
       >
         {children}
-        <span aria-hidden="true">↗</span>
+        <MaterialIcon name="open_in_new" size={16} />
       </a>
     );
   }

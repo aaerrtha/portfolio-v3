@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap");
 
 @theme {
   --font-sans: var(--font-geist-sans);
@@ -15,8 +16,6 @@
   --color-card: #f8f8f7;
 
   --sidebar-width: 260px;
-  --theme-transition-duration: 300ms;
-  --theme-transition-easing: ease-in-out;
 }
 
 .dark {
@@ -51,19 +50,34 @@
   h3 {
     @apply font-serif;
   }
+
+  .material-symbols-rounded {
+    font-family: "Material Symbols Rounded";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "liga";
+  }
 }
 
-html.theme-transition,
-html.theme-transition *,
-html.theme-transition *::before,
-html.theme-transition *::after {
-  transition:
-    background-color var(--theme-transition-duration) var(--theme-transition-easing),
-    color var(--theme-transition-duration) var(--theme-transition-easing),
-    border-color var(--theme-transition-duration) var(--theme-transition-easing),
-    fill var(--theme-transition-duration) var(--theme-transition-easing),
-    stroke var(--theme-transition-duration) var(--theme-transition-easing),
-    box-shadow var(--theme-transition-duration) var(--theme-transition-easing) !important;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
 }
 
 nextjs-portal {

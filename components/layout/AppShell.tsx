@@ -5,7 +5,6 @@ import { Sidebar } from "./Sidebar";
 import { MobileNav } from "./MobileNav";
 import { ContentPanel } from "./ContentPanel";
 import { PageTransition } from "@/components/ui/PageTransition";
-import { ThemeInspector } from "@/components/theme/ThemeInspector";
 
 interface AppShellProps {
   children: ReactNode;
@@ -19,7 +18,6 @@ export function AppShell({ children }: AppShellProps) {
       <ContentPanel>
         <PageTransition>{children}</PageTransition>
       </ContentPanel>
-      <ThemeInspector />
     </div>
   );
 }

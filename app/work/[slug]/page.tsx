@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/mdx/MDXRenderer";
+import { MaterialIcon } from "@/components/ui/MaterialIcon";
 import { ProjectHeader } from "@/components/work/ProjectMetrics";
 import { ProjectHeaderImage } from "@/components/work/ProjectHeaderImage";
 import { getAllProjects, getProjectBySlug } from "@/lib/content";
@@ -41,9 +42,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     <article className="w-full text-left">
       <Link
         href="/"
-        className="mb-8 inline-block text-sm text-muted transition-colors hover:text-foreground"
+        className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
       >
-        ← Work
+        <MaterialIcon name="arrow_back" size={18} />
+        Work
       </Link>
 
       <ProjectHeaderImage project={project} />

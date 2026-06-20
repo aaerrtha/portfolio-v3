@@ -1,8 +1,20 @@
-import type { ExternalLink, NavItem } from "./types";
+import type { ExternalLink, NavItem, RoleLine } from "./types";
 
 export const siteConfig = {
   name: "Partha Hukai",
   description: "Product designer and builder — case studies, experiments, and notes.",
+  roles: [
+    {
+      prefix: "Currently @",
+      company: "bigbasket",
+      href: "https://www.bigbasket.com",
+    },
+    {
+      prefix: "Previously @",
+      company: "Electronic Arts",
+      href: "https://www.ea.com",
+    },
+  ] satisfies RoleLine[],
   nav: [
     { label: "Work", href: "/" },
     { label: "Labs", href: "/labs" },

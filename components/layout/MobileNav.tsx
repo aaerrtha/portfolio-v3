@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/constants";
 import { NavLink } from "./NavLink";
+import { SiteRoles } from "./SiteRoles";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 export function MobileNav() {
@@ -63,6 +64,8 @@ export function MobileNav() {
               className="relative border-b border-border bg-background px-6 py-8"
             >
               <div className="flex flex-col gap-6">
+                <SiteRoles />
+
                 <div className="flex flex-col gap-3">
                   {siteConfig.nav.map((item) => (
                     <NavLink

@@ -31,3 +31,9 @@ export interface ExternalLink {
   label: string;
   href: string;
 }
+
+export interface RoleLine {
+  prefix: string;
+  company: string;
+  href: string;
+}

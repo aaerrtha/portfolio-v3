@@ -4,7 +4,7 @@ export function Paragraph({ children, ...props }: ComponentProps<"p">) {
   return (
     <p
       {...props}
-      className="mb-5 max-w-3xl text-left text-base leading-relaxed text-foreground"
+      className="mb-5 w-full text-left text-base leading-relaxed text-foreground"
     >
       {children}
     </p>

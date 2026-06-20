@@ -8,7 +8,7 @@ function Heading2(props: ComponentProps<"h2">) {
   return (
     <h2
       {...props}
-      className="mb-4 mt-10 max-w-3xl text-left font-serif text-xl font-semibold text-foreground"
+      className="mb-4 mt-10 w-full text-left font-serif text-xl font-semibold text-foreground"
     />
   );
 }
@@ -17,7 +17,7 @@ function Heading3(props: ComponentProps<"h3">) {
   return (
     <h3
       {...props}
-      className="mb-3 mt-8 max-w-3xl text-left font-serif text-lg font-semibold text-foreground"
+      className="mb-3 mt-8 w-full text-left font-serif text-lg font-semibold text-foreground"
     />
   );
 }
@@ -26,7 +26,7 @@ function UnorderedList(props: ComponentProps<"ul">) {
   return (
     <ul
       {...props}
-      className="mb-5 max-w-3xl list-disc space-y-2 pl-5 text-left text-base leading-relaxed text-foreground"
+      className="mb-5 w-full list-disc space-y-2 pl-5 text-left text-base leading-relaxed text-foreground"
     />
   );
 }
@@ -35,7 +35,7 @@ function OrderedList(props: ComponentProps<"ol">) {
   return (
     <ol
       {...props}
-      className="mb-5 max-w-3xl list-decimal space-y-2 pl-5 text-left text-base leading-relaxed text-foreground"
+      className="mb-5 w-full list-decimal space-y-2 pl-5 text-left text-base leading-relaxed text-foreground"
     />
   );
 }

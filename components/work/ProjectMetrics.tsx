@@ -21,7 +21,7 @@ export function MetricsRow({ metrics }: { metrics: ImpactMetric[] }) {
 
 export function ProjectHeader({ project }: { project: ProjectFrontmatter }) {
   return (
-    <header className="max-w-3xl text-left">
+    <header className="w-full text-left">
       <h1 className="font-serif text-2xl md:text-3xl font-semibold text-foreground leading-tight">
         {project.title}
       </h1>

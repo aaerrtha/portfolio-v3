@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/constants";
 import { NavLink } from "./NavLink";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
-
 export function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -82,8 +80,6 @@ export function MobileNav() {
                     </NavLink>
                   ))}
                 </div>
-
-                <ThemeToggle />
               </div>
             </motion.nav>
           </>

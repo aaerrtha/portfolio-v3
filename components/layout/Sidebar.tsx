@@ -3,8 +3,6 @@
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/constants";
 import { NavLink } from "./NavLink";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
-
 export function Sidebar() {
   const pathname = usePathname();
 
@@ -38,10 +36,6 @@ export function Sidebar() {
             </NavLink>
           ))}
         </nav>
-      </div>
-
-      <div className="mt-auto">
-        <ThemeToggle />
       </div>
     </aside>
   );

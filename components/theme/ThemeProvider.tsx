@@ -13,10 +13,13 @@ type Theme = "light" | "dark";
 
 interface ThemeContextValue {
   theme: Theme;
+  setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+
+const THEME_TRANSITION_MS = 300;
 
 function getPreferredTheme(): Theme {
   if (typeof window === "undefined") return "light";
@@ -25,30 +28,45 @@ function getPreferredTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-function applyTheme(theme: Theme) {
+function applyThemeClass(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
 }
 
+function applyThemeWithTransition(theme: Theme) {
+  const root = document.documentElement;
+  root.classList.add("theme-transition");
+  applyThemeClass(theme);
+  window.setTimeout(() => {
+    root.classList.remove("theme-transition");
+  }, THEME_TRANSITION_MS);
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>("light");
 
   useEffect(() => {
     const preferred = getPreferredTheme();
-    setTheme(preferred);
-    applyTheme(preferred);
+    setThemeState(preferred);
+    applyThemeClass(preferred);
+  }, []);
+
+  const setTheme = useCallback((next: Theme) => {
+    setThemeState(next);
+    localStorage.setItem("theme", next);
+    applyThemeWithTransition(next);
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setTheme((current) => {
+    setThemeState((current) => {
       const next = current === "light" ? "dark" : "light";
       localStorage.setItem("theme", next);
-      applyTheme(next);
+      applyThemeWithTransition(next);
       return next;
     });
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

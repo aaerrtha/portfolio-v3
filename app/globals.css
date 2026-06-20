@@ -8,21 +8,29 @@
   --color-foreground: #0a0a0a;
   --color-muted: #6b7280;
   --color-metric: #16a34a;
+  --color-metric-foreground: #ffffff;
   --color-placeholder: #d0e7ff;
-  --color-placeholder-dark: #2a2a2a;
   --color-border: #e5e7eb;
   --color-accent: #f3f4f6;
+  --color-card: #f8f8f7;
 
   --sidebar-width: 260px;
+  --theme-transition-duration: 300ms;
+  --theme-transition-easing: ease-in-out;
 }
 
 .dark {
-  --color-background: #0a0a0a;
-  --color-foreground: #f5f5f5;
-  --color-muted: #9ca3af;
-  --color-metric: #22c55e;
-  --color-border: #262626;
-  --color-accent: #171717;
+  color-scheme: dark;
+
+  --color-background: #100d0a;
+  --color-foreground: #faf6f2;
+  --color-muted: #aba6a0;
+  --color-metric: #52d87a;
+  --color-metric-foreground: #100d0a;
+  --color-placeholder: #2a2420;
+  --color-border: #2f2a25;
+  --color-accent: #1c1814;
+  --color-card: #1c1814;
 }
 
 @layer base {
@@ -31,7 +39,7 @@
   }
 
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth bg-background;
   }
 
   body {
@@ -43,6 +51,19 @@
   h3 {
     @apply font-serif;
   }
+}
+
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color var(--theme-transition-duration) var(--theme-transition-easing),
+    color var(--theme-transition-duration) var(--theme-transition-easing),
+    border-color var(--theme-transition-duration) var(--theme-transition-easing),
+    fill var(--theme-transition-duration) var(--theme-transition-easing),
+    stroke var(--theme-transition-duration) var(--theme-transition-easing),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-easing) !important;
 }
 
 nextjs-portal {

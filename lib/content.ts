@@ -70,14 +70,3 @@ export function getProjectBySlug(slug: string): Project | null {
 export function getProjectSlugs(): string[] {
   return getAllProjects().map((project) => project.slug);
 }
-
-export function getNextProject(slug: string): Project | null {
-  const projects = getAllProjects();
-  const index = projects.findIndex((project) => project.slug === slug);
-
-  if (index === -1 || index === projects.length - 1) {
-    return null;
-  }
-
-  return projects[index + 1];
-}

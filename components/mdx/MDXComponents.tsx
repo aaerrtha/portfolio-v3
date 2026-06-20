@@ -1,21 +1,15 @@
 import type { ComponentProps } from "react";
-import { getHeadingText, slugifyHeading } from "@/lib/headings";
 import { Paragraph } from "./Paragraph";
 import { ImageGrid } from "./ImageGrid";
 import { CaseImage } from "./CaseImage";
 import { SummaryHighlight } from "./SummaryHighlight";
 
-function Heading2({ children, ...props }: ComponentProps<"h2">) {
-  const id = slugifyHeading(getHeadingText(children));
-
+function Heading2(props: ComponentProps<"h2">) {
   return (
     <h2
       {...props}
-      id={id}
-      className="mb-4 mt-10 w-full scroll-mt-28 text-left font-serif text-xl font-semibold text-foreground md:scroll-mt-10"
-    >
-      {children}
-    </h2>
+      className="mb-4 mt-10 w-full text-left font-serif text-xl font-semibold text-foreground"
+    />
   );
 }
 

@@ -14,18 +14,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <motion.article whileHover={{ scale: 1.005 }} transition={{ duration: 0.2 }}>
       <Link href={`/work/${project.slug}`} className="group block text-left">
-        <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground leading-tight group-hover:text-muted transition-colors">
-          {project.title}
-        </h2>
-        <p className="mt-3 max-w-2xl text-base text-muted leading-relaxed">
-          {project.subtitle}
-        </p>
-        {project.metrics.length > 0 && (
-          <div className="mt-4">
-            <MetricsRow metrics={project.metrics} />
-          </div>
-        )}
-        <div className="mt-8 overflow-hidden rounded-2xl aspect-[16/9] bg-[#D0E7FF]">
+        <div className="mb-8 overflow-hidden rounded-2xl aspect-[16/9] bg-[#D0E7FF]">
           {project.coverImage ? (
             <Image
               src={project.coverImage}
@@ -38,6 +27,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
             />
           ) : null}
         </div>
+        <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground leading-tight group-hover:text-muted transition-colors">
+          {project.title}
+        </h2>
+        <p className="mt-3 max-w-2xl text-base text-muted leading-relaxed">
+          {project.subtitle}
+        </p>
+        {project.metrics.length > 0 && (
+          <div className="mt-4">
+            <MetricsRow metrics={project.metrics} />
+          </div>
+        )}
       </Link>
     </motion.article>
   );

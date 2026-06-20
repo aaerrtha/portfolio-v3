@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-newsreader);
+  --font-serif: var(--font-instrument-serif);
 
   --color-background: #ffffff;
   --color-foreground: #0a0a0a;

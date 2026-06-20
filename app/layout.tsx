@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
-import { Newsreader } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
 import { AppShell } from "@/components/layout/AppShell";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
 
-const newsreader = Newsreader({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-newsreader",
+  variable: "--font-instrument-serif",
+  weight: "400",
   display: "swap",
 });
 
@@ -40,7 +41,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${newsreader.variable}`}
+      className={`${GeistSans.variable} ${instrumentSerif.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

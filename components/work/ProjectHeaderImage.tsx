@@ -13,7 +13,7 @@ export function ProjectHeaderImage({ project }: ProjectHeaderImageProps) {
   return (
     <PlaceholderBlock
       aspect="wide"
-      className="mx-auto mb-10 w-full"
+      className="mb-10 max-w-5xl"
       label={alt}
     >
       {(project.headerImage ?? project.coverImage) && (

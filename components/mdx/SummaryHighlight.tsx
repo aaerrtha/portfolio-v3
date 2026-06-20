@@ -6,7 +6,7 @@ interface SummaryHighlightProps {
 
 export function SummaryHighlight({ children }: SummaryHighlightProps) {
   return (
-    <div className="mx-auto my-8 max-w-2xl border-t-2 border-metric pt-5 text-center">
+    <div className="my-8 max-w-3xl border-l-2 border-metric pl-5 text-left">
       <p className="font-serif text-lg leading-relaxed text-foreground">{children}</p>
     </div>
   );

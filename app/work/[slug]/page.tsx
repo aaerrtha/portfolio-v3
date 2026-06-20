@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/mdx/MDXRenderer";
-import { CaseStudyLayout } from "@/components/work/CaseStudyLayout";
 import { ProjectHeader } from "@/components/work/ProjectMetrics";
 import { ProjectHeaderImage } from "@/components/work/ProjectHeaderImage";
 import { getAllProjects, getProjectBySlug } from "@/lib/content";
-import { extractSections } from "@/lib/sections";
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -39,10 +37,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
-  const sections = extractSections(project.content);
-
   return (
-    <CaseStudyLayout sections={sections}>
+    <article className="text-left">
       <Link
         href="/"
         className="mb-8 inline-block text-sm text-muted transition-colors hover:text-foreground"
@@ -53,6 +49,6 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <ProjectHeaderImage project={project} />
       <ProjectHeader project={project} />
       <MDXRenderer source={project.content} />
-    </CaseStudyLayout>
+    </article>
   );
 }

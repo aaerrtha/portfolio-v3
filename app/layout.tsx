@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
-import { Instrument_Serif } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import { AppShell } from "@/components/layout/AppShell";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
 
-const instrumentSerif = Instrument_Serif({
+const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-instrument-serif",
-  weight: "400",
+  variable: "--font-bricolage-grotesque",
   display: "swap",
 });
 
@@ -41,7 +40,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${instrumentSerif.variable}`}
+      className={`${GeistSans.variable} ${bricolageGrotesque.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

@@ -20,15 +20,15 @@
 .dark {
   color-scheme: dark;
 
-  --color-background: #100d0a;
-  --color-foreground: #faf6f2;
-  --color-muted: #aba6a0;
+  --color-background: #0b1215;
+  --color-foreground: #f0f4f6;
+  --color-muted: #8d9aa3;
   --color-metric: #52d87a;
-  --color-metric-foreground: #100d0a;
-  --color-placeholder: #2a2420;
-  --color-border: #2f2a25;
-  --color-accent: #1c1814;
-  --color-card: #1c1814;
+  --color-metric-foreground: #0b1215;
+  --color-placeholder: #172028;
+  --color-border: #243038;
+  --color-accent: #131c22;
+  --color-card: #131c22;
 }
 
 @layer base {

@@ -11,5 +11,5 @@ export function ImageGrid({ columns = 2, children }: ImageGridProps) {
       ? "grid grid-cols-1 gap-6 md:grid-cols-3"
       : "grid grid-cols-1 gap-6 md:grid-cols-2";
 
-  return <div className={`${gridClass} my-8 max-w-5xl text-left`}>{children}</div>;
+  return <div className={`${gridClass} mx-auto my-8 max-w-4xl text-center`}>{children}</div>;
 }

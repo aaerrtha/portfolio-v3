@@ -7,9 +7,5 @@ interface MDXRendererProps {
 export async function MDXRenderer({ source }: MDXRendererProps) {
   const content = await compileMDXContent(source);
 
-  return (
-    <article className="prose-custom mt-10 max-w-3xl text-left [&_*]:text-left">
-      {content}
-    </article>
-  );
+  return <div className="prose-custom mt-10 text-center [&_*]:text-center">{content}</div>;
 }

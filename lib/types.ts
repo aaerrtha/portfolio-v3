@@ -13,6 +13,8 @@ export interface ProjectFrontmatter {
   metrics: ImpactMetric[];
   coverImage?: string;
   coverAlt?: string;
+  headerImage?: string;
+  headerAlt?: string;
   tags?: string[];
 }
 

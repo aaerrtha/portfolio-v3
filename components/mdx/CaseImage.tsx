@@ -1,25 +1,35 @@
 import Image from "next/image";
+import { IMAGE_BLUR_DATA_URL } from "@/lib/image";
+import { PlaceholderBlock } from "@/components/ui/PlaceholderBlock";
 
 interface CaseImageProps {
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
   caption?: string;
+  aspect?: "video" | "square" | "wide";
 }
 
-export function CaseImage({ src, alt, caption }: CaseImageProps) {
+export function CaseImage({
+  src,
+  alt = "Content image placeholder",
+  caption,
+  aspect = "wide",
+}: CaseImageProps) {
   return (
     <figure className="text-left">
-      <div className="overflow-hidden rounded-2xl bg-[#D0E7FF]">
-        <Image
-          src={src}
-          alt={alt}
-          width={1200}
-          height={800}
-          className="h-auto w-full object-cover"
-          placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI4MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI0QwRTdGRiIvPjwvc3ZnPg=="
-        />
-      </div>
+      <PlaceholderBlock aspect={aspect} label={alt}>
+        {src && (
+          <Image
+            src={src}
+            alt={alt}
+            width={1200}
+            height={800}
+            className="h-full w-full object-cover"
+            placeholder="blur"
+            blurDataURL={IMAGE_BLUR_DATA_URL}
+          />
+        )}
+      </PlaceholderBlock>
       {caption && (
         <figcaption className="mt-2 text-sm text-muted">{caption}</figcaption>
       )}

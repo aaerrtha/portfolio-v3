@@ -10,8 +10,10 @@ metrics:
     direction: up
   - label: "Another Metric"
     direction: up
-coverImage: "/images/work/placeholder.jpg"
-coverAlt: "Project screenshot placeholder"
+coverImage: "/images/work/your-project-cover.jpg"
+coverAlt: "Cover image for the work feed"
+headerImage: "/images/work/your-project-header.jpg"
+headerAlt: "Header image for the case study detail page"
 tags: ["product", "design"]
 ---
 
@@ -21,6 +23,17 @@ Use this space for a concise project summary. This template is placeholder conte
 
 Write your case study here using markdown. Replace all sample text with your own project details.
 
+<CaseImage alt="Content image placeholder" caption="Optional inline image — omit src to show a placeholder block." />
+
 ## Section Heading
 
 Keep paragraphs short, specific, and left-aligned. Add images to `public/images/work/` when ready.
+
+<ImageGrid columns={2}>
+  <CaseImage alt="Screen one placeholder" caption="First supporting image" />
+  <CaseImage alt="Screen two placeholder" caption="Second supporting image" />
+</ImageGrid>
+
+To use real images, add files under `public/images/work/` and pass the path:
+
+<CaseImage src="/images/work/your-screenshot.jpg" alt="Describe the image" caption="Optional caption" />

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/mdx/MDXRenderer";
 import { ProjectHeader } from "@/components/work/ProjectMetrics";
+import { ProjectHeaderImage } from "@/components/work/ProjectHeaderImage";
 import { getAllProjects, getProjectBySlug } from "@/lib/content";
 
 interface CaseStudyPageProps {
@@ -45,6 +46,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         ← Work
       </Link>
 
+      <ProjectHeaderImage project={project} />
       <ProjectHeader project={project} />
       <MDXRenderer source={project.content} />
     </article>

@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
-import { MaterialIcon } from "@/components/ui/MaterialIcon";
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
@@ -33,10 +33,11 @@ export function ThemeToggle() {
         transition={{ duration: 0.2 }}
         className="inline-flex"
       >
-        <MaterialIcon
-          name={theme === "light" ? "dark_mode" : "light_mode"}
-          size={22}
-        />
+        {theme === "light" ? (
+          <MoonIcon className="h-[22px] w-[22px]" aria-hidden="true" />
+        ) : (
+          <SunIcon className="h-[22px] w-[22px]" aria-hidden="true" />
+        )}
       </motion.span>
     </button>
   );

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/constants";
 import { NavLink } from "./NavLink";
-import { MaterialIcon } from "@/components/ui/MaterialIcon";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 export function MobileNav() {
   const pathname = usePathname();
@@ -36,7 +36,11 @@ export function MobileNav() {
           aria-expanded={open}
           className="inline-flex items-center justify-center text-foreground"
         >
-          <MaterialIcon name={open ? "close" : "menu"} size={22} />
+          {open ? (
+            <XMarkIcon className="h-[22px] w-[22px]" aria-hidden="true" />
+          ) : (
+            <Bars3Icon className="h-[22px] w-[22px]" aria-hidden="true" />
+          )}
         </button>
       </div>
 

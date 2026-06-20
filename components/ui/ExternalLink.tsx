@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { MaterialIcon } from "@/components/ui/MaterialIcon";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 interface ExternalLinkProps {
   href: string;
@@ -15,7 +15,7 @@ export function ExternalLink({ href, children }: ExternalLinkProps) {
       className="inline-flex items-center gap-1 text-foreground underline underline-offset-4 hover:text-muted transition-colors"
     >
       {children}
-      <MaterialIcon name="open_in_new" size={16} />
+      <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden="true" />
     </a>
   );
 }

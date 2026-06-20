@@ -16,8 +16,8 @@ export function CaseImage({
   aspect = "wide",
 }: CaseImageProps) {
   return (
-    <figure className="text-left">
-      <PlaceholderBlock aspect={aspect} label={alt}>
+    <figure className="my-8 w-full text-left">
+      <PlaceholderBlock aspect={aspect} className="w-full" label={alt}>
         {src && (
           <Image
             src={src}

@@ -8,7 +8,7 @@ export async function MDXRenderer({ source }: MDXRendererProps) {
   const content = await compileMDXContent(source);
 
   return (
-    <article className="prose-custom mt-10 max-w-3xl text-left [&_*]:text-left">
+    <article className="prose-custom mt-10 w-full text-left [&_*]:text-left">
       {content}
     </article>
   );

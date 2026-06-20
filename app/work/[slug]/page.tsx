@@ -38,7 +38,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   }
 
   return (
-    <article className="text-left">
+    <article className="w-full text-left">
       <Link
         href="/"
         className="mb-8 inline-block text-sm text-muted transition-colors hover:text-foreground"

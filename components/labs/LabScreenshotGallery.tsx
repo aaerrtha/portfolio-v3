@@ -22,7 +22,7 @@ export function LabScreenshotGallery({
         }));
 
   return (
-    <div className="-mx-3 mb-10 flex gap-4 overflow-x-auto px-3 pb-2 md:mx-0 md:px-0">
+    <div className="-mx-3 mb-10 flex gap-4 overflow-x-auto px-3 pb-2 scrollbar-hide md:mx-0 md:px-0">
       {items.map((screenshot, index) => (
         <div
           key={screenshot.src ?? `placeholder-${index}`}

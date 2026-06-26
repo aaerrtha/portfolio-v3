@@ -67,7 +67,7 @@ function ProjectCardContent({
         </span>
       </div>
 
-      <p className={`mt-[22px] max-w-[580px] text-[15px] leading-[1.6] text-body ${isLocked ? "opacity-70" : ""}`}>
+      <p className={`mt-[22px] w-full text-left text-[15px] leading-[1.6] text-body ${isLocked ? "opacity-70" : ""}`}>
         {project.subtitle}
       </p>
 

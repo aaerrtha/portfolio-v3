@@ -11,9 +11,14 @@ function parseProject(filename: string): Project | null {
   }
 
   const filePath = path.join(WORK_DIR, filename);
+  return parseProjectFile(filePath);
+}
+
+function parseProjectFile(filePath: string, slugOverride?: string): Project | null {
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
   const frontmatter = data as ProjectFrontmatter;
+  const filename = path.basename(filePath);
 
   if (!frontmatter.slug) {
     frontmatter.slug = filename.replace(/\.mdx$/, "");
@@ -21,6 +26,7 @@ function parseProject(filename: string): Project | null {
 
   return {
     ...frontmatter,
+    slug: slugOverride ?? frontmatter.slug,
     content,
   };
 }
@@ -59,21 +65,28 @@ export function getAllProjectSummaries(): ProjectFrontmatter[] {
 }
 
 export function getProjectBySlug(slug: string): Project | null {
-  const filePath = path.join(WORK_DIR, `${slug}.mdx`);
+  const directPath = path.join(WORK_DIR, `${slug}.mdx`);
+  if (fs.existsSync(directPath)) {
+    return parseProjectFile(directPath, slug);
+  }
 
-  if (!fs.existsSync(filePath)) {
+  if (!fs.existsSync(WORK_DIR)) {
     return null;
   }
 
-  const raw = fs.readFileSync(filePath, "utf8");
-  const { data, content } = matter(raw);
-  const frontmatter = data as ProjectFrontmatter;
+  for (const filename of fs.readdirSync(WORK_DIR)) {
+    if (!filename.endsWith(".mdx") || filename.startsWith("_")) {
+      continue;
+    }
 
-  return {
-    ...frontmatter,
-    slug,
-    content,
-  };
+    const filePath = path.join(WORK_DIR, filename);
+    const project = parseProjectFile(filePath);
+    if (project?.slug === slug) {
+      return project;
+    }
+  }
+
+  return null;
 }
 
 export function getProjectSlugs(): string[] {

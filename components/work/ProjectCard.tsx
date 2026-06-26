@@ -41,7 +41,7 @@ function ProjectCardContent({
       </div>
 
       <h2
-        className={`mb-[22px] max-w-[640px] text-[38px] font-semibold leading-[1.08] tracking-[-0.022em] text-foreground ${isLocked ? "opacity-70" : ""}`}
+        className={`mb-[22px] w-full text-[38px] font-semibold leading-[1.08] tracking-[-0.022em] text-foreground ${isLocked ? "opacity-70" : ""}`}
       >
         {project.title}
       </h2>

@@ -5,7 +5,11 @@ import type { Project, ProjectFrontmatter } from "./types";
 
 const WORK_DIR = path.join(process.cwd(), "content/work");
 
-function isPublicProject(project: Project): boolean {
+function isPublishedProject(project: Project): boolean {
+  return project.published;
+}
+
+function isViewableProject(project: Project): boolean {
   return project.published && !project.locked;
 }
 
@@ -79,9 +83,13 @@ export function getAllProjects(): Project[] {
   const files = fs.readdirSync(WORK_DIR);
   const projects = files
     .map(parseProject)
-    .filter((project): project is Project => project !== null && isPublicProject(project));
+    .filter((project): project is Project => project !== null && isPublishedProject(project));
 
   return sortProjects(projects);
+}
+
+export function getViewableProjects(): Project[] {
+  return getAllProjects().filter(isViewableProject);
 }
 
 export function toProjectSummary(project: Project): ProjectFrontmatter {
@@ -95,7 +103,7 @@ export function getAllProjectSummaries(): ProjectFrontmatter[] {
 
 export function getProjectBySlug(slug: string): Project | null {
   const project = findProjectBySlug(slug);
-  if (!project || !isPublicProject(project)) {
+  if (!project || !isViewableProject(project)) {
     return null;
   }
 
@@ -103,5 +111,5 @@ export function getProjectBySlug(slug: string): Project | null {
 }
 
 export function getProjectSlugs(): string[] {
-  return getAllProjects().map((project) => project.slug);
+  return getViewableProjects().map((project) => project.slug);
 }

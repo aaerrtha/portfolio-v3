@@ -4,14 +4,14 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { MDXRenderer } from "@/components/mdx/MDXRenderer";
 import { ProjectHeader } from "@/components/work/ProjectMetrics";
 import { ProjectHeaderImage } from "@/components/work/ProjectHeaderImage";
-import { getAllProjects, getProjectBySlug } from "@/lib/content";
+import { getViewableProjects, getProjectBySlug } from "@/lib/content";
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return getAllProjects().map((project) => ({
+  return getViewableProjects().map((project) => ({
     slug: project.slug,
   }));
 }

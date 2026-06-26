@@ -1,8 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
@@ -18,27 +16,18 @@ export function ThemeToggle() {
     toggleTheme(origin);
   };
 
+  const label = theme === "dark" ? "light" : "dark";
+  const icon = theme === "dark" ? "☼" : "☾";
+
   return (
     <button
       ref={buttonRef}
       type="button"
       onClick={handleClick}
-      aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-      className="inline-flex items-center justify-center text-muted transition-colors hover:text-foreground"
+      aria-label={`Switch to ${label} mode`}
+      className="font-mono text-[11px] tracking-[0.05em] text-toggle transition-colors duration-150 ease-in-out hover:text-muted"
     >
-      <motion.span
-        key={theme}
-        initial={{ rotate: -90, opacity: 0 }}
-        animate={{ rotate: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className="inline-flex"
-      >
-        {theme === "light" ? (
-          <MoonIcon className="h-4 w-4" aria-hidden="true" />
-        ) : (
-          <SunIcon className="h-4 w-4" aria-hidden="true" />
-        )}
-      </motion.span>
+      {icon}&nbsp;&nbsp;{label}
     </button>
   );
 }

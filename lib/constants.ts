@@ -29,4 +29,4 @@ export const siteConfig = {
   ] satisfies ExternalLink[],
 };
 
-export const SIDEBAR_WIDTH = 260;
+export const SIDEBAR_WIDTH = 220;

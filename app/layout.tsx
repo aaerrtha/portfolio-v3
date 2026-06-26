@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Schibsted_Grotesk, Space_Mono } from "next/font/google";
 import { AppShell } from "@/components/layout/AppShell";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const schibstedGrotesk = Schibsted_Grotesk({
   subsets: ["latin"],
-  variable: "--font-bricolage-grotesque",
+  variable: "--font-schibsted-grotesk",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -40,7 +47,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${bricolageGrotesque.variable}`}
+      className={`${schibstedGrotesk.variable} ${spaceMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

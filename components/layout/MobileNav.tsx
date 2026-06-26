@@ -8,6 +8,7 @@ import { NavLink } from "./NavLink";
 import { SiteRoles } from "./SiteRoles";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+
 export function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -24,11 +25,11 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <header className="md:hidden fixed top-0 left-0 right-0 z-50 border-b border-border bg-background">
-      <div className="flex items-center justify-between px-3 py-4">
-        <NavLink href="/">
-          <span className="text-sm font-medium text-foreground">{siteConfig.name}</span>
-        </NavLink>
+    <header className="fixed top-0 right-0 left-0 z-50 border-b border-border bg-background md:hidden">
+      <div className="flex items-center justify-between px-6 py-4">
+        <span className="text-xl font-bold tracking-[-0.01em] text-foreground">
+          {siteConfig.name}
+        </span>
 
         <button
           type="button"
@@ -61,12 +62,12 @@ export function MobileNav() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative border-b border-border bg-background px-3 py-8"
+              className="relative border-b border-border bg-background px-6 py-8"
             >
               <div className="flex flex-col gap-6">
                 <SiteRoles />
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-[11px] text-[15px] font-medium">
                   {siteConfig.nav.map((item) => (
                     <NavLink
                       key={item.href}
@@ -82,7 +83,7 @@ export function MobileNav() {
                   ))}
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-[9px] font-mono text-xs">
                   {siteConfig.external.map((item) => (
                     <NavLink key={item.href} href={item.href} external>
                       {item.label}

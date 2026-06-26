@@ -5,45 +5,43 @@ import { siteConfig } from "@/lib/constants";
 import { NavLink } from "./NavLink";
 import { SiteRoles } from "./SiteRoles";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+
 export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex fixed left-0 top-0 z-40 h-screen w-[var(--sidebar-width)] flex-col bg-background px-8 py-10">
-      <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-2">
-          <NavLink href="/" active={pathname === "/"}>
-            <span className="text-sm font-medium text-foreground">{siteConfig.name}</span>
-          </NavLink>
-          <SiteRoles />
-        </div>
-
-        <nav className="flex flex-col gap-3">
-          {siteConfig.nav.map((item) => (
-            <NavLink
-              key={item.href}
-              href={item.href}
-              active={
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href)
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <nav className="flex flex-col gap-3">
-          {siteConfig.external.map((item) => (
-            <NavLink key={item.href} href={item.href} external>
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
+    <aside className="hidden w-[var(--sidebar-width)] shrink-0 flex-col md:flex md:sticky md:top-20 md:self-start">
+      <div className="text-xl font-bold tracking-[-0.01em] text-foreground">
+        {siteConfig.name}
       </div>
 
-      <div className="mt-auto">
+      <SiteRoles />
+
+      <nav className="mt-[42px] flex flex-col gap-[11px] text-[15px] font-medium">
+        {siteConfig.nav.map((item) => (
+          <NavLink
+            key={item.href}
+            href={item.href}
+            active={
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href)
+            }
+          >
+            {item.label}
+          </NavLink>
+        ))}
+      </nav>
+
+      <nav className="mt-[42px] flex flex-col gap-[9px] font-mono text-xs">
+        {siteConfig.external.map((item) => (
+          <NavLink key={item.href} href={item.href} external>
+            {item.label}
+          </NavLink>
+        ))}
+      </nav>
+
+      <div className="mt-12">
         <ThemeToggle />
       </div>
     </aside>

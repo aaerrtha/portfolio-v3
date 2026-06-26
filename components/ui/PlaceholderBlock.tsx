@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
-import { PLACEHOLDER_BG_CLASS } from "@/lib/image";
 
 interface PlaceholderBlockProps {
-  aspect?: "video" | "square" | "wide";
+  aspect?: "video" | "square" | "wide" | "feed";
   className?: string;
   children?: ReactNode;
   label?: string;
@@ -12,6 +11,7 @@ const aspectClasses = {
   video: "aspect-video",
   square: "aspect-square",
   wide: "aspect-[16/9]",
+  feed: "aspect-[16/8]",
 };
 
 export function PlaceholderBlock({
@@ -24,7 +24,7 @@ export function PlaceholderBlock({
     <div
       role={children ? undefined : "img"}
       aria-label={children ? undefined : label}
-      className={`overflow-hidden rounded-2xl ${PLACEHOLDER_BG_CLASS} ${aspectClasses[aspect]} ${className}`}
+      className={`placeholder-stripe overflow-hidden rounded-lg ${aspectClasses[aspect]} ${className}`}
     >
       {children}
     </div>

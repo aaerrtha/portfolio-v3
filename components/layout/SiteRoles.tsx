@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/constants";
 
 export function SiteRoles() {
   return (
-    <div className="flex flex-col gap-1 text-sm leading-relaxed text-muted">
+    <div className="mt-[18px] flex flex-col text-sm leading-[1.7] text-muted">
       {siteConfig.roles.map((role) => (
         <p key={role.company}>
           {role.prefix}{" "}
@@ -10,7 +10,7 @@ export function SiteRoles() {
             href={role.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-foreground"
+            className="text-foreground transition-colors duration-150 ease-in-out hover:text-foreground"
           >
             {role.company}
           </a>

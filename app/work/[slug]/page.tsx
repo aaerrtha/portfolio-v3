@@ -2,13 +2,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { MDXRenderer } from "@/components/mdx/MDXRenderer";
+import { CaseStudyGate } from "@/components/work/CaseStudyGate";
 import { ProjectHeader } from "@/components/work/ProjectMetrics";
 import { ProjectHeaderImage } from "@/components/work/ProjectHeaderImage";
 import { getAllProjects, getProjectBySlug } from "@/lib/content";
+import { isProjectPasswordProtected, isProjectUnlocked } from "@/lib/work-auth";
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
 }
+
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   return getAllProjects().map((project) => ({
@@ -38,6 +42,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
+  const isProtected = isProjectPasswordProtected(project);
+  const isUnlocked = !isProtected || (await isProjectUnlocked(slug));
+
   return (
     <article className="w-full text-left">
       <Link
@@ -48,9 +55,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         Work
       </Link>
 
-      <ProjectHeaderImage project={project} />
-      <ProjectHeader project={project} />
-      <MDXRenderer source={project.content} />
+      {isUnlocked ? (
+        <>
+          <ProjectHeaderImage project={project} />
+          <ProjectHeader project={project} />
+          <MDXRenderer source={project.content} />
+        </>
+      ) : (
+        <CaseStudyGate slug={slug} title={project.title} subtitle={project.subtitle} />
+      )}
     </article>
   );
 }

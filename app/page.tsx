@@ -1,8 +1,8 @@
 import { ProjectFeed } from "@/components/work/ProjectFeed";
-import { getAllProjects } from "@/lib/content";
+import { getAllProjectSummaries } from "@/lib/content";
 
 export default function HomePage() {
-  const projects = getAllProjects();
+  const projects = getAllProjectSummaries();
 
   return (
     <section className="text-left">

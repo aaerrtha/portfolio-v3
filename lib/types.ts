@@ -16,6 +16,7 @@ export interface ProjectFrontmatter {
   headerImage?: string;
   headerAlt?: string;
   tags?: string[];
+  passwordProtected?: boolean;
 }
 
 export interface Project extends ProjectFrontmatter {

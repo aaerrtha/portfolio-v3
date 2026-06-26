@@ -49,6 +49,15 @@ export function getAllProjects(): Project[] {
   return sortProjects(projects);
 }
 
+export function toProjectSummary(project: Project): ProjectFrontmatter {
+  const { content: _content, ...summary } = project;
+  return summary;
+}
+
+export function getAllProjectSummaries(): ProjectFrontmatter[] {
+  return getAllProjects().map(toProjectSummary);
+}
+
 export function getProjectBySlug(slug: string): Project | null {
   const filePath = path.join(WORK_DIR, `${slug}.mdx`);
 

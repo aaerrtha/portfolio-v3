@@ -21,7 +21,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const imgLabel = getProjectImageLabel(project);
   const year = getProjectYear(project.date);
   const number = formatProjectNumber(index);
-  const isLocked = Boolean(project.passwordProtected);
 
   return (
     <article>
@@ -29,11 +28,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="mb-[18px] flex items-baseline justify-between font-mono text-xs uppercase tracking-[0.06em] text-meta">
           <span>
             {number} &nbsp;·&nbsp; {imgLabel}
-            {isLocked && (
-              <>
-                &nbsp;·&nbsp; <span className="text-accent-amber">locked</span>
-              </>
-            )}
           </span>
           <span>{year}</span>
         </div>

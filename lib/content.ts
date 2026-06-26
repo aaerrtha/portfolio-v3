@@ -5,6 +5,10 @@ import type { Project, ProjectFrontmatter } from "./types";
 
 const WORK_DIR = path.join(process.cwd(), "content/work");
 
+function isPublicProject(project: Project): boolean {
+  return project.published && !project.locked;
+}
+
 function parseProject(filename: string): Project | null {
   if (!filename.endsWith(".mdx") || filename.startsWith("_")) {
     return null;
@@ -42,29 +46,7 @@ function sortProjects(projects: Project[]): Project[] {
   });
 }
 
-export function getAllProjects(): Project[] {
-  if (!fs.existsSync(WORK_DIR)) {
-    return [];
-  }
-
-  const files = fs.readdirSync(WORK_DIR);
-  const projects = files
-    .map(parseProject)
-    .filter((project): project is Project => project !== null && project.published);
-
-  return sortProjects(projects);
-}
-
-export function toProjectSummary(project: Project): ProjectFrontmatter {
-  const { content: _content, ...summary } = project;
-  return summary;
-}
-
-export function getAllProjectSummaries(): ProjectFrontmatter[] {
-  return getAllProjects().map(toProjectSummary);
-}
-
-export function getProjectBySlug(slug: string): Project | null {
+function findProjectBySlug(slug: string): Project | null {
   const directPath = path.join(WORK_DIR, `${slug}.mdx`);
   if (fs.existsSync(directPath)) {
     return parseProjectFile(directPath, slug);
@@ -87,6 +69,37 @@ export function getProjectBySlug(slug: string): Project | null {
   }
 
   return null;
+}
+
+export function getAllProjects(): Project[] {
+  if (!fs.existsSync(WORK_DIR)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(WORK_DIR);
+  const projects = files
+    .map(parseProject)
+    .filter((project): project is Project => project !== null && isPublicProject(project));
+
+  return sortProjects(projects);
+}
+
+export function toProjectSummary(project: Project): ProjectFrontmatter {
+  const { content: _content, ...summary } = project;
+  return summary;
+}
+
+export function getAllProjectSummaries(): ProjectFrontmatter[] {
+  return getAllProjects().map(toProjectSummary);
+}
+
+export function getProjectBySlug(slug: string): Project | null {
+  const project = findProjectBySlug(slug);
+  if (!project || !isPublicProject(project)) {
+    return null;
+  }
+
+  return project;
 }
 
 export function getProjectSlugs(): string[] {
